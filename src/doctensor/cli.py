@@ -3,6 +3,10 @@ from typing import Optional
 
 from doctensor.ingestion.pdf import PDFIngestor
 from doctensor.pipeline.pipeline import DocumentPipeline
+from doctensor.pipeline.stages import OCRStage
+from doctensor.ocr.paddle import PaddleOCRBackend
+from doctensor.layout.heuristic import HeuristicLayoutBackend
+from doctensor.pipeline.layout_stage import LayoutStage
 from doctensor.exporters.json import export_json
 from doctensor.exporters.markdown import export_markdown
 
@@ -16,18 +20,29 @@ def main(
     output: Optional[str] = typer.Option(None, "--output", "-o", help="Output file path")
 ):
     """Universal Document Engine CLI."""
-    # In a full app, we'd have a FileDetector stage to pick the right Ingestor
     if not input_path.lower().endswith(".pdf"):
         typer.echo(f"Unsupported file extension for MVP. Please provide a PDF: {input_path}", err=True)
         raise typer.Exit(code=1)
 
-    ingestor = PDFIngestor()
-    
     typer.echo(f"Ingesting {input_path}...")
+    ingestor = PDFIngestor()
     context = ingestor.ingest(input_path)
 
-    # The pipeline is mostly empty for the absolute MVP as PDFIngestor does native extraction
-    pipeline = DocumentPipeline(stages=[])
+    typer.echo("Initializing OCR Backend...")
+    try:
+        ocr_backend = PaddleOCRBackend()
+        ocr_stage = OCRStage(backend=ocr_backend)
+        stages = [ocr_stage]
+    except ImportError:
+        typer.echo("Warning: paddleocr not installed. OCR stage will be skipped.", err=True)
+        stages = []
+        
+    typer.echo("Initializing Layout Backend...")
+    layout_backend = HeuristicLayoutBackend()
+    layout_stage = LayoutStage(backend=layout_backend)
+    stages.append(layout_stage)
+
+    pipeline = DocumentPipeline(stages=stages)
     
     typer.echo("Running pipeline...")
     context = pipeline.run(context)

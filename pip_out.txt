@@ -1,0 +1,94 @@
+Obtaining file:///F:/DataExtract/DocTensor
+  Installing build dependencies: started
+  Installing build dependencies: finished with status 'done'
+  Checking if build backend supports build_editable: started
+  Checking if build backend supports build_editable: finished with status 'done'
+  Getting requirements to build editable: started
+  Getting requirements to build editable: finished with status 'done'
+  Preparing editable metadata (pyproject.toml): started
+  Preparing editable metadata (pyproject.toml): finished with status 'done'
+Requirement already satisfied: pydantic>=2 in .\venv\Lib\site-packages (from doctensor==0.1.0) (2.13.4)
+Requirement already satisfied: pymupdf in .\venv\Lib\site-packages (from doctensor==0.1.0) (1.28.2)
+Requirement already satisfied: pdfplumber in .\venv\Lib\site-packages (from doctensor==0.1.0) (0.11.10)
+Requirement already satisfied: python-docx in .\venv\Lib\site-packages (from doctensor==0.1.0) (1.2.0)
+Requirement already satisfied: openpyxl in .\venv\Lib\site-packages (from doctensor==0.1.0) (3.1.5)
+Requirement already satisfied: python-pptx in .\venv\Lib\site-packages (from doctensor==0.1.0) (1.0.2)
+Requirement already satisfied: pillow in .\venv\Lib\site-packages (from doctensor==0.1.0) (12.3.0)
+Requirement already satisfied: numpy in .\venv\Lib\site-packages (from doctensor==0.1.0) (2.5.2)
+Requirement already satisfied: opencv-python in .\venv\Lib\site-packages (from doctensor==0.1.0) (5.0.0.93)
+Requirement already satisfied: fastapi in .\venv\Lib\site-packages (from doctensor==0.1.0) (0.141.1)
+Requirement already satisfied: uvicorn in .\venv\Lib\site-packages (from doctensor==0.1.0) (0.52.4)
+Requirement already satisfied: python-multipart in .\venv\Lib\site-packages (from doctensor==0.1.0) (0.0.32)
+Requirement already satisfied: pyyaml in .\venv\Lib\site-packages (from doctensor==0.1.0) (6.0.3)
+Requirement already satisfied: typer in .\venv\Lib\site-packages (from doctensor==0.1.0) (0.27.1)
+Collecting pytest (from doctensor==0.1.0)
+  Using cached pytest-9.1.1-py3-none-any.whl.metadata (7.6 kB)
+Collecting pytest-cov (from doctensor==0.1.0)
+  Downloading pytest_cov-7.1.0-py3-none-any.whl.metadata (32 kB)
+Collecting ruff (from doctensor==0.1.0)
+  Downloading ruff-0.16.3-py3-none-win_amd64.whl.metadata (26 kB)
+Collecting mypy (from doctensor==0.1.0)
+  Downloading mypy-2.3.1-cp314-cp314-win_amd64.whl.metadata (2.4 kB)
+Requirement already satisfied: annotated-types>=0.6.0 in .\venv\Lib\site-packages (from pydantic>=2->doctensor==0.1.0) (0.8.0)
+Requirement already satisfied: pydantic-core==2.46.4 in .\venv\Lib\site-packages (from pydantic>=2->doctensor==0.1.0) (2.46.4)
+Requirement already satisfied: typing-extensions>=4.14.1 in .\venv\Lib\site-packages (from pydantic>=2->doctensor==0.1.0) (4.16.0)
+Requirement already satisfied: typing-inspection>=0.4.2 in .\venv\Lib\site-packages (from pydantic>=2->doctensor==0.1.0) (0.4.4)
+Requirement already satisfied: starlette>=0.46.0 in .\venv\Lib\site-packages (from fastapi->doctensor==0.1.0) (1.6.0)
+Requirement already satisfied: annotated-doc>=0.0.2 in .\venv\Lib\site-packages (from fastapi->doctensor==0.1.0) (0.0.5)
+Requirement already satisfied: anyio<5,>=3.6.2 in .\venv\Lib\site-packages (from starlette>=0.46.0->fastapi->doctensor==0.1.0) (4.14.2)
+Requirement already satisfied: idna>=2.8 in .\venv\Lib\site-packages (from anyio<5,>=3.6.2->starlette>=0.46.0->fastapi->doctensor==0.1.0) (3.19)
+Collecting mypy_extensions>=1.0.0 (from mypy->doctensor==0.1.0)
+  Using cached mypy_extensions-1.1.0-py3-none-any.whl.metadata (1.1 kB)
+Collecting pathspec>=1.0.0 (from mypy->doctensor==0.1.0)
+  Using cached pathspec-1.1.1-py3-none-any.whl.metadata (14 kB)
+Collecting librt>=0.13.0 (from mypy->doctensor==0.1.0)
+  Downloading librt-0.15.0-cp314-cp314-win_amd64.whl.metadata (1.3 kB)
+Collecting ast-serialize<1.0.0,>=0.6.0 (from mypy->doctensor==0.1.0)
+  Downloading ast_serialize-0.8.0-cp39-abi3-win_amd64.whl.metadata (1.4 kB)
+Requirement already satisfied: et-xmlfile in .\venv\Lib\site-packages (from openpyxl->doctensor==0.1.0) (2.0.0)
+Requirement already satisfied: pdfminer.six==20260107 in .\venv\Lib\site-packages (from pdfplumber->doctensor==0.1.0) (20260107)
+Requirement already satisfied: pypdfium2>=5.9.0 in .\venv\Lib\site-packages (from pdfplumber->doctensor==0.1.0) (5.13.0)
+Requirement already satisfied: charset-normalizer>=2.0.0 in .\venv\Lib\site-packages (from pdfminer.six==20260107->pdfplumber->doctensor==0.1.0) (3.5.1)
+Requirement already satisfied: cryptography>=36.0.0 in .\venv\Lib\site-packages (from pdfminer.six==20260107->pdfplumber->doctensor==0.1.0) (50.0.0)
+Requirement already satisfied: cffi>=2.0.0 in .\venv\Lib\site-packages (from cryptography>=36.0.0->pdfminer.six==20260107->pdfplumber->doctensor==0.1.0) (2.1.1)
+Requirement already satisfied: pycparser in .\venv\Lib\site-packages (from cffi>=2.0.0->cryptography>=36.0.0->pdfminer.six==20260107->pdfplumber->doctensor==0.1.0) (3.0)
+Requirement already satisfied: colorama>=0.4 in .\venv\Lib\site-packages (from pytest->doctensor==0.1.0) (0.4.6)
+Collecting iniconfig>=1.0.1 (from pytest->doctensor==0.1.0)
+  Using cached iniconfig-2.3.0-py3-none-any.whl.metadata (2.5 kB)
+Collecting packaging>=22 (from pytest->doctensor==0.1.0)
+  Using cached packaging-26.3-py3-none-any.whl.metadata (3.5 kB)
+Collecting pluggy<2,>=1.5 (from pytest->doctensor==0.1.0)
+  Using cached pluggy-1.6.0-py3-none-any.whl.metadata (4.8 kB)
+Requirement already satisfied: pygments>=2.7.2 in .\venv\Lib\site-packages (from pytest->doctensor==0.1.0) (2.21.0)
+Collecting coverage>=7.10.6 (from coverage[toml]>=7.10.6->pytest-cov->doctensor==0.1.0)
+  Downloading coverage-7.15.4-cp314-cp314-win_amd64.whl.metadata (8.8 kB)
+Requirement already satisfied: lxml>=3.1.0 in .\venv\Lib\site-packages (from python-docx->doctensor==0.1.0) (6.1.2)
+Requirement already satisfied: XlsxWriter>=0.5.7 in .\venv\Lib\site-packages (from python-pptx->doctensor==0.1.0) (3.2.9)
+Requirement already satisfied: shellingham>=1.3.0 in .\venv\Lib\site-packages (from typer->doctensor==0.1.0) (1.5.4)
+Requirement already satisfied: rich>=13.8.0 in .\venv\Lib\site-packages (from typer->doctensor==0.1.0) (15.0.0)
+Requirement already satisfied: markdown-it-py>=2.2.0 in .\venv\Lib\site-packages (from rich>=13.8.0->typer->doctensor==0.1.0) (4.2.0)
+Requirement already satisfied: mdurl~=0.1 in .\venv\Lib\site-packages (from markdown-it-py>=2.2.0->rich>=13.8.0->typer->doctensor==0.1.0) (0.1.2)
+Requirement already satisfied: click>=7.0 in .\venv\Lib\site-packages (from uvicorn->doctensor==0.1.0) (8.4.2)
+Requirement already satisfied: h11>=0.8 in .\venv\Lib\site-packages (from uvicorn->doctensor==0.1.0) (0.16.0)
+Downloading mypy-2.3.1-cp314-cp314-win_amd64.whl (11.4 MB)
+   ---------------------------------------- 11.4/11.4 MB 10.9 MB/s  0:00:01
+Downloading ast_serialize-0.8.0-cp39-abi3-win_amd64.whl (1.1 MB)
+   ---------------------------------------- 1.1/1.1 MB 9.6 MB/s  0:00:00
+Downloading librt-0.15.0-cp314-cp314-win_amd64.whl (121 kB)
+Using cached mypy_extensions-1.1.0-py3-none-any.whl (5.0 kB)
+Using cached pathspec-1.1.1-py3-none-any.whl (57 kB)
+Using cached pytest-9.1.1-py3-none-any.whl (386 kB)
+Using cached pluggy-1.6.0-py3-none-any.whl (20 kB)
+Using cached iniconfig-2.3.0-py3-none-any.whl (7.5 kB)
+Using cached packaging-26.3-py3-none-any.whl (129 kB)
+Downloading pytest_cov-7.1.0-py3-none-any.whl (22 kB)
+Downloading coverage-7.15.4-cp314-cp314-win_amd64.whl (225 kB)
+Downloading ruff-0.16.3-py3-none-win_amd64.whl (11.4 MB)
+   ---------------------------------------- 11.4/11.4 MB 10.7 MB/s  0:00:01
+Building wheels for collected packages: doctensor
+  Building editable for doctensor (pyproject.toml): started
+  Building editable for doctensor (pyproject.toml): finished with status 'done'
+  Created wheel for doctensor: filename=doctensor-0.1.0-0.editable-py3-none-any.whl size=1390 sha256=29653c6f3179eccd77e8655ec168f5f53e26ef1f76c76db42a2ecbf32ee8524a
+  Stored in directory: C:\Users\anany\AppData\Local\Temp\pip-ephem-wheel-cache-jjapg5le\wheels\dc\b8\84\3ee270dfa3f36d2fc79e54f2e3eff8da92511910c70297e5ab
+Successfully built doctensor
+Installing collected packages: ruff, pluggy, pathspec, packaging, mypy_extensions, librt, iniconfig, coverage, ast-serialize, pytest, mypy, pytest-cov, doctensor
