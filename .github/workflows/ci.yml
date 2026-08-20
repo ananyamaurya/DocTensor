@@ -19,7 +19,6 @@ jobs:
       run: |
         python -m pip install --upgrade pip
         pip install -e .[dev]
-    # Here we would normally run pytest, ruff, etc.
-    # - name: Run tests
-    #   run: |
-    #     pytest
+    - name: Run tests
+      run: |
+        pytest
