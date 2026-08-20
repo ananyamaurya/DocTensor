@@ -3,9 +3,9 @@ import os
 sys.path.insert(0, os.path.abspath('src'))
 
 import fitz
-from unidoc.ingestion.pdf import PDFIngestor
-from unidoc.exporters.json import export_json
-from unidoc.exporters.markdown import export_markdown
+from doctensor.ingestion.pdf import PDFIngestor
+from doctensor.exporters.json import export_json
+from doctensor.exporters.markdown import export_markdown
 
 # create a dummy pdf to test
 doc = fitz.open()

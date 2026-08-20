@@ -1,8 +1,8 @@
 from abc import ABC, abstractmethod
 from typing import Any
 
-from unidoc.ir.models import DocumentMetadata
-from unidoc.pipeline.context import PipelineContext
+from doctensor.ir.models import DocumentMetadata
+from doctensor.pipeline.context import PipelineContext
 
 
 class DocumentIngestor(ABC):

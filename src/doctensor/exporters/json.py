@@ -1,4 +1,4 @@
-from unidoc.ir.models import Document
+from doctensor.ir.models import Document
 
 
 def export_json(document: Document, path: str) -> None:

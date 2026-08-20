@@ -1,4 +1,4 @@
-from unidoc.ir.models import Document
+from doctensor.ir.models import Document
 
 
 class MarkdownRenderer:

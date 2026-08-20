@@ -1,8 +1,8 @@
 import fitz
 
-from unidoc.ingestion.base import DocumentIngestor
-from unidoc.pipeline.context import PipelineContext
-from unidoc.ir.models import Page, Element, BoundingBox, DocumentMetadata
+from doctensor.ingestion.base import DocumentIngestor
+from doctensor.pipeline.context import PipelineContext
+from doctensor.ir.models import Page, Element, BoundingBox, DocumentMetadata
 
 
 class PDFIngestor(DocumentIngestor):
@@ -60,7 +60,7 @@ class PDFIngestor(DocumentIngestor):
         )
         
         # Initialize Document inside context early so pipeline has it
-        from unidoc.ir.models import Document
+        from doctensor.ir.models import Document
         context.document = Document(
             metadata=metadata,
             pages=pages

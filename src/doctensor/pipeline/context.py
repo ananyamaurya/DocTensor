@@ -1,7 +1,7 @@
 from dataclasses import dataclass, field
 from typing import Any
 
-from unidoc.ir.models import Document, Page
+from doctensor.ir.models import Document, Page
 
 
 @dataclass

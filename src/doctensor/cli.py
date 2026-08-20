@@ -1,10 +1,10 @@
 import typer
 from typing import Optional
 
-from unidoc.ingestion.pdf import PDFIngestor
-from unidoc.pipeline.pipeline import DocumentPipeline
-from unidoc.exporters.json import export_json
-from unidoc.exporters.markdown import export_markdown
+from doctensor.ingestion.pdf import PDFIngestor
+from doctensor.pipeline.pipeline import DocumentPipeline
+from doctensor.exporters.json import export_json
+from doctensor.exporters.markdown import export_markdown
 
 app = typer.Typer()
 

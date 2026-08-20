@@ -1,6 +1,6 @@
 from abc import ABC, abstractmethod
 
-from unidoc.pipeline.context import PipelineContext
+from doctensor.pipeline.context import PipelineContext
 
 
 class PipelineStage(ABC):
