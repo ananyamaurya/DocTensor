@@ -1,0 +1,38 @@
+[project]
+name = "unidoc"
+version = "0.1.0"
+requires-python = ">=3.11"
+
+dependencies = [
+    "pydantic>=2",
+    "pymupdf",
+    "pdfplumber",
+    "python-docx",
+    "openpyxl",
+    "python-pptx",
+    "pillow",
+    "numpy",
+    "opencv-python",
+    "fastapi",
+    "uvicorn",
+    "python-multipart",
+    "pyyaml",
+    "typer",
+]
+
+[project.optional-dependencies]
+ocr = [
+    "paddleocr",
+]
+
+ml = [
+    "torch",
+    "transformers",
+]
+
+dev = [
+    "pytest",
+    "pytest-cov",
+    "ruff",
+    "mypy",
+]
