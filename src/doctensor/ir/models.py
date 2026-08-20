@@ -37,6 +37,7 @@ class Page(BaseModel):
     width: float
     height: float
     elements: list[Element] = []
+    metadata: dict[str, Any] = Field(default_factory=dict)
 
 
 class DocumentMetadata(BaseModel):
