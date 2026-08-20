@@ -20,8 +20,9 @@ class PDFIngestor(DocumentIngestor):
         for index, page in enumerate(doc):
             text = page.get_text("text")
             
-            # Very basic native element extraction for MVP
             elements = []
+            needs_ocr = False
+            
             if text.strip():
                 elements.append(
                     Element(
@@ -39,9 +40,8 @@ class PDFIngestor(DocumentIngestor):
                         text=text.strip(),
                     )
                 )
-            
-            # Note: For MVP we don't fully decompose blocks natively yet, just treating whole page text
-            # as paragraph element, but a full implementation would use page.get_text("dict") to extract blocks.
+            else:
+                needs_ocr = True
 
             page_model = Page(
                 physical_page_number=index + 1,
@@ -50,6 +50,8 @@ class PDFIngestor(DocumentIngestor):
                 height=page.rect.height,
                 elements=elements
             )
+            # Attach needs_ocr to page metadata
+            page_model.metadata["needs_ocr"] = needs_ocr
             pages.append(page_model)
             
         context = PipelineContext(
@@ -59,7 +61,6 @@ class PDFIngestor(DocumentIngestor):
             pages=pages,
         )
         
-        # Initialize Document inside context early so pipeline has it
         from doctensor.ir.models import Document
         context.document = Document(
             metadata=metadata,
