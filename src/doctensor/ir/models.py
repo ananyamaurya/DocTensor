@@ -17,7 +17,7 @@ class Span(BaseModel):
 
 class Element(BaseModel):
     id: str
-    type: str
+    type: Literal["title", "heading", "paragraph", "list", "table", "figure", "caption", "equation", "header", "footer", "footnote", "code", "quote", "page_number", "unknown"]
     page: int
     bbox: BoundingBox | None = None
     confidence: float | None = Field(default=None, ge=0, le=1)

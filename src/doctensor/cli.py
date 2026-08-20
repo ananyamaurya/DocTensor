@@ -5,6 +5,8 @@ from doctensor.ingestion.pdf import PDFIngestor
 from doctensor.pipeline.pipeline import DocumentPipeline
 from doctensor.pipeline.stages import OCRStage
 from doctensor.ocr.paddle import PaddleOCRBackend
+from doctensor.layout.heuristic import HeuristicLayoutBackend
+from doctensor.pipeline.layout_stage import LayoutStage
 from doctensor.exporters.json import export_json
 from doctensor.exporters.markdown import export_markdown
 
@@ -34,6 +36,11 @@ def main(
     except ImportError:
         typer.echo("Warning: paddleocr not installed. OCR stage will be skipped.", err=True)
         stages = []
+        
+    typer.echo("Initializing Layout Backend...")
+    layout_backend = HeuristicLayoutBackend()
+    layout_stage = LayoutStage(backend=layout_backend)
+    stages.append(layout_stage)
 
     pipeline = DocumentPipeline(stages=stages)
     
