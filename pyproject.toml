@@ -42,6 +42,10 @@ api = [
 s3 = [
     "boto3>=1.34.60"
 ]
+mcp = [
+    "mcp>=1.0.0",
+    "fastmcp>=3.4.0"
+]
 ml = [
     "torch",
     "transformers",
@@ -50,6 +54,7 @@ ml = [
 eval = [
     "Levenshtein",
     "nltk",
+    "sacrebleu"
 ]
 
 dev = [
@@ -64,3 +69,4 @@ where = ["src"]
 
 [project.scripts]
 doctensor = "doctensor.cli:app"
+doctensor-mcp = "doctensor.mcp_server:main"
