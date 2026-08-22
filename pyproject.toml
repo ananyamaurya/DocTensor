@@ -34,6 +34,10 @@ ml = [
     "transformers",
 ]
 
+math = [
+    "pix2tex",
+]
+
 dev = [
     "pytest",
     "pytest-cov",

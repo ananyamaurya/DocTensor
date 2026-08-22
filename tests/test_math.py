@@ -6,6 +6,8 @@ from doctensor.pipeline.context import PipelineContext
 from doctensor.math.pix2tex_backend import Pix2TexBackend
 from doctensor.pipeline.math_stage import MathStage
 
+import pytest
+
 def test_pix2tex():
     print("Creating mock equation image...")
     img = Image.new('RGB', (200, 50), color = (255, 255, 255))
