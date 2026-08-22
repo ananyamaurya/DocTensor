@@ -61,6 +61,11 @@ def main(
     except Exception as e:
         typer.echo(f"Warning: Math backend failed to initialize: {e}", err=True)
 
+    typer.echo("Initializing Cleanup Stage...")
+    from doctensor.pipeline.cleanup_stage import CleanupStage
+    cleanup_stage = CleanupStage()
+    stages.append(cleanup_stage)
+
     pipeline = DocumentPipeline(stages=stages)
     
     typer.echo("Running pipeline...")
