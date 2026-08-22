@@ -12,7 +12,7 @@ class MathStage(PipelineStage):
         if context.source_type != "pdf" or context.raw_document is None:
             return context
 
-        import fitz
+        import pymupdf as fitz
         from PIL import Image
 
         doc: fitz.Document = context.raw_document

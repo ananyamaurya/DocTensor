@@ -14,7 +14,7 @@ app = typer.Typer()
 
 
 @app.command()
-def main(
+def extract(
     input_path: str = typer.Argument(..., help="Path to the input document"),
     format: str = typer.Option("json", "--format", "-f", help="Output format (json, markdown)"),
     output: Optional[str] = typer.Option(None, "--output", "-o", help="Output file path")
@@ -90,6 +90,46 @@ def main(
         raise typer.Exit(code=1)
         
     typer.echo("Done!")
+
+
+@app.command()
+def evaluate(
+    prediction_path: str = typer.Argument(..., help="Path to the predicted Document JSON"),
+    reference_path: str = typer.Argument(..., help="Path to the reference Ground Truth Document JSON"),
+    ignore_headers_footers: bool = typer.Option(True, "--ignore-headers-footers", "-i", help="Ignore headers and footers during evaluation")
+):
+    """Evaluate a predicted document against a ground truth reference."""
+    import json
+    from doctensor.ir.models import Document
+    from doctensor.evaluation.evaluator import DocumentEvaluator
+
+    try:
+        with open(prediction_path, "r", encoding="utf-8") as f:
+            pred_json = json.load(f)
+            prediction = Document(**pred_json)
+    except Exception as e:
+        typer.echo(f"Failed to load prediction JSON: {e}", err=True)
+        raise typer.Exit(code=1)
+
+    try:
+        with open(reference_path, "r", encoding="utf-8") as f:
+            ref_json = json.load(f)
+            reference = Document(**ref_json)
+    except Exception as e:
+        typer.echo(f"Failed to load reference JSON: {e}", err=True)
+        raise typer.Exit(code=1)
+
+    evaluator = DocumentEvaluator(ignore_headers_footers=ignore_headers_footers)
+    typer.echo(f"Evaluating {prediction_path} against {reference_path}...")
+    
+    results = evaluator.evaluate(prediction, reference)
+    
+    typer.echo("\n--- Evaluation Results ---")
+    typer.echo(f"Character Error Rate (CER): {results['cer']:.4f}")
+    typer.echo(f"Edit Distance: {results['edit_distance']}")
+    typer.echo(f"BLEU Score: {results['bleu']:.4f}")
+    typer.echo(f"Prediction Length: {results['pred_length']} chars")
+    typer.echo(f"Reference Length: {results['ref_length']} chars")
 
 
 if __name__ == "__main__":
