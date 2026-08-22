@@ -2,7 +2,7 @@ import sys
 import os
 sys.path.insert(0, os.path.abspath('src'))
 
-import fitz
+import pymupdf as fitz
 from doctensor.ingestion.pdf import PDFIngestor
 from doctensor.exporters.json import export_json
 from doctensor.exporters.markdown import export_markdown

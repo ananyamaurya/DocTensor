@@ -1,4 +1,4 @@
-import fitz
+import pymupdf as fitz
 
 from doctensor.ingestion.base import DocumentIngestor
 from doctensor.pipeline.context import PipelineContext
