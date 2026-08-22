@@ -42,6 +42,13 @@ def main(
     layout_stage = LayoutStage(backend=layout_backend)
     stages.append(layout_stage)
 
+    typer.echo("Initializing Reading Order Reconstructor...")
+    from doctensor.layout.reading_order import ReadingOrderReconstructor
+    from doctensor.pipeline.reading_order_stage import ReadingOrderStage
+    reading_order_reconstructor = ReadingOrderReconstructor()
+    reading_order_stage = ReadingOrderStage(reconstructor=reading_order_reconstructor)
+    stages.append(reading_order_stage)
+
     pipeline = DocumentPipeline(stages=stages)
     
     typer.echo("Running pipeline...")
