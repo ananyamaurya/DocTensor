@@ -25,3 +25,5 @@ def make_celery(redis_url: str = "redis://localhost:6379/0") -> Celery:
 def get_celery_app() -> Celery:
     from doctensor.api.config import get_settings
     return make_celery(get_settings().redis_url)
+
+app = get_celery_app()

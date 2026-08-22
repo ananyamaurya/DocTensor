@@ -2,8 +2,9 @@ FROM python:3.11-slim
 
 # Install system dependencies (OpenCV, etc.)
 RUN apt-get update && apt-get install -y \
-    libgl1-mesa-glx \
+    libgl1 \
     libglib2.0-0 \
+    libgomp1 \
     && rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
@@ -11,17 +12,15 @@ WORKDIR /app
 # Upgrade pip
 RUN pip install --upgrade pip
 
-# Install project dependencies
-COPY pyproject.toml .
-# Install the core and api dependencies
-RUN pip install .[api]
-
 # Copy application source
+COPY pyproject.toml .
 COPY src/ ./src/
-COPY README.md .
+
+# Install the core and api dependencies
+RUN pip install .[api,ocr]
 
 # Re-install in editable mode so src is linked correctly
-RUN pip install -e .[api]
+RUN pip install -e .[api,ocr]
 
 # Create local storage directory
 RUN mkdir -p /app/tmp_uploads
