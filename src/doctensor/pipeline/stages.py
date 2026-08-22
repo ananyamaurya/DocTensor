@@ -12,9 +12,7 @@ class OCRStage(PipelineStage):
         self.dpi = dpi
 
     def run(self, context: PipelineContext) -> PipelineContext:
-        if context.source_type != "pdf" or context.raw_document is None:
-            # For now, OCR stage only specifically handles PDF rendering logic. 
-            # If it's a direct image, that would be handled differently.
+        if context.raw_document is None:
             return context
 
         doc = context.raw_document # Assuming this is a fitz.Document

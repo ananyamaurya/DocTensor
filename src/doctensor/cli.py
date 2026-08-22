@@ -20,8 +20,8 @@ def extract(
     output: Optional[str] = typer.Option(None, "--output", "-o", help="Output file path")
 ):
     """Universal Document Engine CLI."""
-    if not input_path.lower().endswith(".pdf"):
-        typer.echo(f"Unsupported file extension for MVP. Please provide a PDF: {input_path}", err=True)
+    if not input_path.lower().endswith((".pdf", ".png", ".jpg", ".jpeg")):
+        typer.echo(f"Unsupported file extension. Please provide a PDF or Image (png/jpg): {input_path}", err=True)
         raise typer.Exit(code=1)
 
     typer.echo(f"Ingesting {input_path}...")
