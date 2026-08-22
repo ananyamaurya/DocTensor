@@ -49,6 +49,18 @@ def main(
     reading_order_stage = ReadingOrderStage(reconstructor=reading_order_reconstructor)
     stages.append(reading_order_stage)
 
+    typer.echo("Initializing Math Backend...")
+    try:
+        from doctensor.math.pix2tex_backend import Pix2TexBackend
+        from doctensor.pipeline.math_stage import MathStage
+        math_backend = Pix2TexBackend()
+        math_stage = MathStage(backend=math_backend)
+        stages.append(math_stage)
+    except ImportError as e:
+        typer.echo(f"Warning: Math backend disabled due to import error: {e}", err=True)
+    except Exception as e:
+        typer.echo(f"Warning: Math backend failed to initialize: {e}", err=True)
+
     pipeline = DocumentPipeline(stages=stages)
     
     typer.echo("Running pipeline...")
