@@ -9,7 +9,7 @@ class PaddleOCRBackend(OCRBackend):
     def __init__(self, lang: str = 'en'):
         from paddleocr import PaddleOCR
         # Initialize PaddleOCR (downloads models on first run if needed)
-        self.engine = PaddleOCR(use_angle_cls=True, lang=lang, show_log=False)
+        self.engine = PaddleOCR(use_angle_cls=True, lang=lang)
 
     def recognize(self, image: Image.Image, page_number: int) -> list[Element]:
         # Convert PIL image to numpy array for PaddleOCR
