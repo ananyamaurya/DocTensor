@@ -7,9 +7,11 @@ from doctensor.ir.models import Element, BoundingBox
 
 class PaddleOCRBackend(OCRBackend):
     def __init__(self, lang: str = 'en'):
+        import os
+        os.environ['FLAGS_use_mkldnn'] = '0'
         from paddleocr import PaddleOCR
         # Initialize PaddleOCR (downloads models on first run if needed)
-        self.engine = PaddleOCR(use_angle_cls=True, lang=lang)
+        self.engine = PaddleOCR(use_angle_cls=True, lang=lang, use_mkldnn=False)
 
     def recognize(self, image: Image.Image, page_number: int) -> list[Element]:
         # Convert PIL image to numpy array for PaddleOCR
